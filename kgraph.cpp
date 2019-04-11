@@ -337,16 +337,23 @@ namespace kgraph {
             if (format == FORMAT_TEXT) {
                 std::cerr << "Saving to text file; you won't be able to load text file." << std::endl;
                 ofstream os(path);
-                os << graph.size() << endl;
+                os << graph.size() << " " << INT_MAX << endl;
+                unsigned total_edges = 0;
                 for (unsigned i = 0; i < graph.size(); ++i) {
                     auto const &knn = graph[i];
                     uint32_t K = knn.size();
                     os << K;
+                    total_edges += K;
                     for (unsigned k = 0; k < K; ++k) {
                         os << ' ' << knn[k].id << ' ' << knn[k].dist;
                     }
                     os << endl;
                 }
+                unsigned decimal_graph = to_string(graph.size()).length();
+                unsigned decimal_edges = to_string(total_edges).length();
+                unsigned decimal_max = to_string(INT_MAX).length();
+                os.seekp(decimal_graph + 1);
+                os << total_edges << string(decimal_max - decimal_edges, ' ');
                 return;
             }
             ofstream os(path, ios::binary);
