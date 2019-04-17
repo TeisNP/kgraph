@@ -712,8 +712,11 @@ namespace kgraph {
 #pragma omp parallel for
                 for (unsigned i = 0; i < graph.size(); ++i) {
                     auto &v = graph[i];
+                    std::sort(v.begin(), v.end(), [](Neighbor a, Neighbor b) {
+                        return a.id > b.id;
+                    });
+                    v.resize(std::distance(v.begin(), std::unique(v.begin(), v.end())));
                     std::sort(v.begin(), v.end());
-                    v.resize(std::unique(v.begin(), v.end()) - v.begin());
                     M[i] = v.size();
 #pragma omp critical
                     ++progress;
