@@ -679,7 +679,7 @@ namespace kgraph {
             }
         }
 
-        void reverse (int rev_k) {
+        void reverse (int rev_k, int E) {
             if (rev_k == 0) return;
             if (no_dist) throw runtime_error("Need distance information to reverse graph");
             {
@@ -1014,7 +1014,7 @@ public:
             }
             nhoods.clear();
             if (params.reverse) {
-                reverse(params.reverse);
+                reverse(params.reverse, params.E);
             }
             if (params.prune) {
                 prune(o, params.prune);
