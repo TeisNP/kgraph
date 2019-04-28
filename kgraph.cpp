@@ -715,8 +715,11 @@ namespace kgraph {
                     std::sort(v.begin(), v.end(), [](Neighbor a, Neighbor b) {
                         return a.id > b.id;
                     });
-                    v.resize(std::distance(v.begin(), std::unique(v.begin(), v.end())) < E);
+                    v.resize(std::distance(v.begin(), std::unique(v.begin(), v.end())));
                     std::sort(v.begin(), v.end());
+                    v.resize(std::distance(v.begin(), std::find_if(v.begin(), v.end(), [E](Neighbor a) {
+                        return a.dist > E;
+                    })));
                     M[i] = v.size();
 #pragma omp critical
                     ++progress;

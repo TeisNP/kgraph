@@ -226,7 +226,7 @@ namespace kgraph {
          */
         virtual void get_nn (unsigned id, unsigned *nns, float *dists, unsigned *M, unsigned *L) const = 0;
 
-        virtual void reverse (int) = 0;
+        virtual void reverse (int, int) = 0;
     };
 }
 

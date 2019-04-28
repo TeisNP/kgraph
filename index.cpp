@@ -55,6 +55,7 @@ int main (int argc, char *argv[]) {
     (",S", po::value(&params.S)->default_value(default_S), "")
     (",R", po::value(&params.R)->default_value(default_R), "")
     (",L", po::value(&params.L)->default_value(default_L), "")
+    (",E", po::value(&params.E)->default_value(default_E), "Neighbour distance threshold")
     ("delta", po::value(&params.delta)->default_value(default_delta), "")
     ("recall", po::value(&params.recall)->default_value(default_recall), "")
     ("prune", po::value(&params.prune)->default_value(default_prune), "")
