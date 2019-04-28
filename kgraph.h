@@ -19,6 +19,7 @@ namespace kgraph {
     static unsigned const default_T = 1;
     static unsigned const default_S = 10;
     static unsigned const default_R = 100;
+    static unsigned const default_E = 20;
     static unsigned const default_controls = 100;
     static unsigned const default_seed = 1998;
     static float const default_delta = 0.002;
@@ -97,6 +98,7 @@ namespace kgraph {
             unsigned K;
             unsigned S;
             unsigned R;
+            unsigned E;
             unsigned controls;
             unsigned seed;
             float delta;
@@ -105,7 +107,7 @@ namespace kgraph {
             int reverse;
 
             /// Construct with default values.
-            IndexParams (): iterations(default_iterations), L(default_L), K(default_K), S(default_S), R(default_R), controls(default_controls), seed(default_seed), delta(default_delta), recall(default_recall), prune(default_prune), reverse(default_reverse) {
+            IndexParams (): iterations(default_iterations), L(default_L), K(default_K), S(default_S), R(default_R), E(default_E), controls(default_controls), seed(default_seed), delta(default_delta), recall(default_recall), prune(default_prune), reverse(default_reverse) {
             }
         };
 
